@@ -1,0 +1,338 @@
+﻿<script>
+  console.log(document.getElementById("localResources"))
+  function showField() {
+    let x = document.getElementById("localResources")
+    if (x.style.display === "none") {
+      x.style.display = "block"
+    } else {
+      x.style.display = "none"
+    }
+}
+</script>
+
+<!doctype html>
+<!--html lang=\"no\"-->
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+ </head>
+
+<title>Digital eksamen - Vestfold og Telemark fylkeskommune</title>
+  <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+    body,
+    td,
+    th {
+      font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+      font-style: normal;
+    }
+    #resources p, a {
+      margin: 0%
+    }
+
+    #localResources {
+      width: 100%;
+      text-align: left;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .flex-content {
+      width: 100px;
+      margin: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <img style="margin: 10px" src="https://eksamen.vtfk.no/logo.svg" alt="" />
+  <table width="90%" border="0" align="center">
+    <tr>
+      <td colspan="2" bgcolor="#b2dbd9" style="font-size: 24px;">
+        <p style="margin: 0%" >D<a href="LibreOfficePortable_7.4.1_MultilingualAll.paf.exe" target="_blank" style="color: Black; text-decoration: none;">i</a>gital eksamen - Vestfold og Telemark fylkeskommune - https://eksamen.vtfk.no</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="left" valign="top">
+        <p>Dette er en felles portal for deg som skal ta eksamen i Vestfold og Telemark fylkeskommune.</p>
+
+        <p>Last ned svarmal (Word-dokument): </p>
+       
+   <button id="download-btn2">Last ned svarmal (dokument docx)</button>
+<script>
+  const downloadBtn2 = document.getElementById('download-btn2');
+  downloadBtn2.addEventListener('click', () => {
+    const fileName = prompt('Skriv inn ditt kandidatnummer-fagkode, dette navnet blir filnavnet på svarmalen som blir lagt i Nedlastinger mappen:');
+    if (!fileName) return; // Cancel download if no name is provided
+
+    fetch('eksamensmal.docx')
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${fileName}.docx`);
+        document.body.appendChild(link);
+        link.click();
+      });
+  });
+</script>
+
+        <p>Videre steg:</p>
+        <ul>
+          <li>Registrering og innlevering for eksamen, <a href="https://kandidat.udir.no/" target="new">https://kandidat.udir.no/</a></li>
+          <li><a href="https://www.udir.no/eksamen-og-prover/eksamen/" target="_blank">Generell informasjon om digital eksamen (udir)</a></li>
+        </ul>
+      
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" align="left" valign="top">
+        <p><b>Vestfold og Telemark Fylkeskommune</b> har lagt til rette for at du kan bruke noen nettressurser som hjelpemiddel under
+          eksamen. <br> Disse vil være begrenset til å gjelde oppslag. Du vil ikke ha mulighet til å bruke de som
+          kommunikasjonshjelpemiddel. <br>Husk at det kan være funksjoner som ikke virker gjennom denne løsningen, eksempel
+          video, søk, pålogging, osv.</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="left" valign="top">
+        <br>
+        <p><button onclick="showField()" style="font-size: 14px; padding: 10px;">Trykk her for å se lokale hjelpemidler</button>
+        <div id="localResources" style="display:none;">
+          <h2>Lokale hjelpemidler</h2>
+          <p>Tilgang og lisens til lokale hjelpemidler kan variere fra skole til skole.</p>
+          <div class="flex-container" style="display:flex;">
+            <div class="flex-content" style="flex: 1;">
+              <a href="https://ordnett.no" target="_blank">Ordnett.no</a><br><br>
+              <a href="https://www.unibok.no/" target="_blank">Unibok.no</a><br><br>
+              <a href="https://skolestudio.no" target="_blank">Skolestudio.no (under utvikling)</a><br><br>
+              <a href="https://smartbok.no" target="_blank">Smartbok.no</a><br><br>
+              <a href="https://www.cappelendammundervisning.no/" target="_blank">Cappelendamm.no (under utvikling)</a><br><br>
+            </div>
+            <div class="flex-content" style="flex: 1;">
+              <a href="https://brettboka.no" target="_blank">Brettboka.no</a><br><br>
+              <a href="https://pendel.no" target="_blank">Pendel.no (under utvikling)</a><br><br>
+              <a href="https://aunivers.no" target="_blank">Aunivers.no (under utvikling)</a><br><br>
+              <a href="https://gyldendal.no" target="_blank">Gyldendal.no (under utvikling)</a><br><br>
+            </div>
+          </div>
+            <!-- La til noen ekstra som du kan bruke om du vil. -->
+            <!-- <div class="flex-content">
+              <a href="unibok.no" target="_blank">Unibok</a><br>
+              <a href="skolestudio.no" target="_blank">Skolestudio</a><br>
+              <a href="smartbok.no" target="_blank">Smartbok</a><br>
+              <a href="brettboka.no" target="_blank">Brettboka</a><br>
+            </div> -->
+            <!-- <div class="flex-content">
+              <a href="unibok.no" target="_blank">Unibok</a><br>
+              <a href="skolestudio.no" target="_blank">Skolestudio</a><br>
+              <a href="smartbok.no" target="_blank">Smartbok</a><br>
+              <a href="brettboka.no" target="_blank">Brettboka</a><br>
+            </div> -->
+            <!-- <div class="flex-content">
+              <a href="unibok.no" target="_blank">Unibok</a><br>
+              <a href="skolestudio.no" target="_blank">Skolestudio</a><br>
+              <a href="smartbok.no" target="_blank">Smartbok</a><br>
+              <a href="brettboka.no" target="_blank">Brettboka</a><br>
+            </div> -->
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="left" valign="top">
+        <br>
+        <h2>Nasjonale hjelpemiddel</h2>
+      </td>
+    </tr>
+    <tr>
+      <td width="658" height="327" align="left" valign="top" style="font-weight: normal;">
+    <p style="font-weight: bold">A</p>
+        <a href="https://helpx.adobe.com" target="_blank">Adobe Help Center</a><br>
+        <a href="https://www.allkunne.no/" target="_blank">Allkunne - Nynorsk digitalt oppslagsverk</a><br>
+        <a href="https://www.artsdatabanken.no/" target="_blank">Artsdatabanken</a><br>
+        <a href="https://www.axios.com/" target="_blank">Axios</a><br>
+        <a href="https://amnesty.no/" target="_blank">Amnesty International Norge</a><br>
+    <p style="font-weight: bold">B</p>
+        <a href="https://baakoeh.oahpa.no/" target="_blank">Baakoeh – sørsamisk ordbok</a><br>
+        <a href="https://orv.banenor.no/orv/doku.php" target="_blank">Bane NOR – operativt regelverk</a><br>
+        <a href="https://trv.banenor.no/wiki/Forside" target="_blank">Bane NOR – teknisk regelverk </a><br>
+        <a href="https://www.bufdir.no/" target="_blank">Barne-, ungdoms- og familiedirektoratet</a><br>
+        <a href="https://www.bioteknologiradet.no/" target="_blank">Bioteknologirådet</a><br>
+        <a href="https://www.brreg.no/" target="_blank">Brønnøysundregistrene</a><br>
+        <a href="https://www.parliament.uk/" target="_blank">British Parliament</a><br>
+    <p style="font-weight: bold">C</p>
+        <a href="https://civita.no" target="_blank">Civita – Liberal tankesmie </a><br>
+        <a href="https://crisigroup.org" target="_blank">Crisis Group </a><br>
+        <a href="https://cia.gov/the-world-factbook/countries/" target="_blank">CIA World Factbook </a><br>
+    <p style="font-weight: bold">D</p>
+        <a href="https://www.duden.de/" target="_blank">Duden Wörterbuch – tysk ordbok</a><br>
+        <a href="https://www.dsb.no/" target="_blank">Direktoratet for samfunnssikkerhet og beredskap</a><br>
+        <a href="https://dictionnaire.lerobert.com/" target="_blank">Dico en ligne Le Robert</a><br>
+        <a href="https://www.dnt.no/" target="_blank">DNT – Den Norske Turistforening	</a><br>
+        <a href="https://dfo.no/" target="_blank">Direktoratet for forvaltning og økonomistyring (DFØ)	</a><br>
+        <a href="https://distriktssenteret.no/" target="_blank">Distriktssenteret</a><br>
+    <p style="font-weight: bold">E</p>
+        <a href="https://www.britannica.com/" target="_blank">Encyclopedia Britannica</a><br>
+        <a href="https://european-union.europa.eu/" target="_blank">EU – European Union</a><br>
+    <p style="font-weight: bold">F</p>
+        <a href="https://www.faktisk.no/" target="_blank">Faktisk.no – faktasjekk av norske nyheter	</a><br>
+        <a href="https://www.forskningsetikk.no/" target="_blank">FEK – De nasjonale forskningsetiske komiteene</a><br>
+        <a href="https://folkogforsvar.no/" target="_blank">Folk og Forsvar</a><br>
+        <a href="https://www.felleskatalogen.no/medisin/" target="_blank">Felleskatalogen/Veterinærkatalogen</a><br>
+        <a href="https://www.fn.no/" target="_blank">FN-Sambandet</a><br>
+        <a href="https://forskning.no/" target="_blank">Forskning.no</a><br>
+        <a href="https://www.ffi.no/" target="_blank">Forsvarets forskningsinstitutt</a><br>
+        <a href="https://fhi.no/" target="_blank">Folkehelseinstituttet</a><br>
+        <a href="https://freedomhouse.org/" target="_blank">Freedom House</a><br>
+        <a href="https://finnkode.ehelse.no/" target="_blank">FinnKode - Direktoratet for e-helse medisinske kodeverk</a><br>
+    <p style="font-weight: bold">G</p>
+        <a href="https://geogebra.org" target="_blank">GeoGebra</a><br>
+        <a href="https://globalis.no" target="_blank">Globalis</a><br>
+    <p style="font-weight: bold">H</p>
+        <a href="https://www.helfo.no/" target="_blank">Helfo</a><br>
+        <a href="https://www.helsedirektoratet.no/" target="_blank">Helsedirektoratet</a><br>
+        <a href="https://www.human.no" target="_blank">Human-etisk forbund</a><br>
+    <p style="font-weight: bold">I</p>
+        <a href="https://www.innovasjonnorge.no/" target="_blank">Innovasjon Norge</a><br>
+        <a href="https://ilmainensanakirja.fi/" target="_blank">Ilmainen sanakirja – finsk ordbok</a><br>
+        <a href="https://imo.org/" target="_blank">IMO – International Maritime Organization</a><br>
+        <a href="https://finnkode.ehelse.no/" target="_blank">ICD-10 – klassifikasjon av sykdommer</a><br>
+        <a href="https://islex.arnastofnun.is/" target="_blank">Islex – islandsk ordbok</a><br>
+        <a href="https://www.imdi.no/" target="_blank">Integrerings- og mangfoldsdirektoratet (IMDI)</a><br>
+        <a href="https://www.idunn.no/" target="_blank">Idunn</a><br>
+    <p style="font-weight: bold">K</p>
+        <a href="https://kildekompasset.no/" target="_blank">Kildekompasset</a><br>
+        <a href="https://ks.no/" target="_blank">KS – Kommunesektorens interesseorganisasjon </a><br>
+        <a href="http://kuvsje.oahpa.no/" target="_blank">Kuvsje – sørsamiske læringsstier</a><br>
+    <p style="font-weight: bold">L</p>
+        <a href="https://www.landbruksdirektoratet.no/" target="_blank">Landbruksdirektoratet</a><br>
+        <a href="https://leseverktoy.app.fagbokforlaget.no/" target="_blank">Leseverktøy</a><br>
+        <a href="https://www.lexico.com/" target="_blank">Lexico – engelsk/spansk ordbok</a><br>
+        <a href="https://lexin.oslomet.no/" target="_blank">LEXIN – ordbok for flere språk</a><br>
+        <a href="http://eksamen.lovdata.no/" target="_blank">Lovdata</a><br>
+        <a href="http://lavinia.no/" target="_blank">Lavinia</a><br>
+        <a href="http://wiki.lavinia.no/" target="_blank">Lavinia Wiki</a><br>
+    <p style="font-weight: bold">M</p>
+        <a href="https://www.mattilsynet.no/" target="_blank">Mattilsynet</a><br>
+        <a href="https://www.mediebedriftene.no/" target="_blank">Mediebedriftenes landsforening</a><br>
+        <a href="https://medietilsynet.no/" target="_blank">Medietilsynet</a><br>
+        <a href="https://www.minstemme.no/" target="_blank">Min stemme – Eidsvoll 1814</a><br>
+        <a href="https://www.miljodirektoratet.no/" target="_blank">Miljodirektoratet</a><br>
+        <a href="https://www.merriam-webster.com/" target="_blank">Merriam Webster engelsk ordbok</a><br>
+</td>
+    <td width="661" align="left" valign="top" style="font-weight: normal;">
+    <p style="font-weight: bold">N</p>
+        <a href="https://www.naob.no/" target="_blank">NAOB – Det norske akademis ordbok</a><br>
+        <a href="https://www.nasjonaleturistveger.no/" target="_blank">Nasjonale Tursitveger</a><br>
+        <a href="https://www.nb.no/" target="_blank">Nasjonalbiblioteket</a><br>
+        <a href="https://nato.int/" target="_blank">NATO</a><br>
+        <a href="https://ndla.no/" target="_blank">NDLA</a><br>
+        <a href="https://www.nrk.no/skole/musikkparken/" target="_blank">NRK Skole – Musikkparken</a><br>
+        <a href="https://www.nobelpeaceprize.org/" target="_blank">Nobelprisen</a><br>
+        <a href="https://www.nobelpeaceprize.org/" target="_blank">Nobels fredssenter</a><br>
+        <a href="https://www.ngu.no/" target="_blank">NGU – Norges geologiske undersøkelse</a><br>
+        <a href="https://www.nhoreiseliv.no/" target="_blank">NHO Reiseliv</a><br>
+        <a href="https://nhri.no/" target="_blank">Norges institusjon for menneskerettigheter</a><br>
+        <a href="https://www.norgesnasjonalparker.no/" target="_blank">Norges Nasjonalparker</a><br>
+        <a href="https://nbl.snl.no/" target="_blank">Norsk Biografisk Leksikon</a><br>
+        <a href="https://www.nina.no/" target="_blank">Norsk Institutt for naturforskning</a><br>
+        <a href="https://www.ngu.no/" target="_blank">NGU - Norges geologiske undersøkelse</a><br>
+        <a href="https://nhi.no/" target="_blank">NHI – Norsk Helseinformatikk</a><br>
+        <a href="https://www.nibio.no/" target="_blank">NIBIO – Norsk institutt for bioøkonomi</a><br>
+        <a href="https://www.noklus.no/" target="_blank">NOKLUS – Norsk kvalitetsforbedring av laboratorieundersøkelser</a><br>
+        <a href="https://norgeshistorie.no/" target="_blank">Norgeshistorie</a><br>
+        <a href="https://www.norges-bank.no/" target="_blank">Norges Bank</a><br>
+        <a href="https://lastebil.no/Infobank/Faktabank/Ordliste" target="_blank">Norges Lastebileierforbund – ordliste</a><br>
+        <a href="https://presse.no/" target="_blank">Norsk Presseforbund </a><br>
+        <a href="https://norsksidene.no/web/" target="_blank">Norsksidene</a><br>
+        <a href="https://www.nupi.no/" target="_blank">Norsk Utenrikspolitisk Institutt</a><br>
+        <a href="https://www.nupi.no/skole" target="_blank">Norsk Utenrikspolitisk Institutt Skoleversjon</a><br>
+        <a href="https://www.nve.no/" target="_blank">NVE - Norges vassdrags og energidirektorat</a><br>
+        <a href="https://www.nho.no/" target="_blank">Næringslivets Hovedorganisasjon (NHO)</a><br>
+    <p style="font-weight: bold">O</p>
+        <a href="https://ordbokene.no/" target="_blank">Ordbokene.no</a><br>
+        <a href="https://www.olympiatoppen.no/" target="_blank">Olympiatoppen</a><br>
+        <a href="https://www.ons.gov.uk/" target="_blank">Office of National Statistics UK</a><br>
+    <p style="font-weight: bold">P</p>
+        <a href="https://www.powerthesaurus.org/" target="_blank">Power Thesaurus – engelsk ordbok</a><br>
+        <a href="https://www.proff.no/" target="_blank">Proff</a><br>
+        <a href="https://psykologtidsskriftet.no/" target="_blank">Psykologtidsskriftet</a><br>
+        <a href="https://www.pewresearch.org/" target="_blank">Pew Research Center</a><br>
+        <a href="https://www.prio.org/" target="_blank">Peace Research Institute Oslo</a><br>
+        <a href="https://pst.no/" target="_blank">PST – Politiets sikkerhetstjeneste</a><br>
+        <a href="https://owl.purdue.edu/owl/research_and_citations/" target="_blank">Purdue Owl (VIRKER IKKE FOR ØYEBLIKKET)	</a><br>
+    <p style="font-weight: bold">R</p>
+        <a href="https://dle.rae.es/" target="_blank">Real Academia Española – spansk ordbok</a><br>
+        <a href="https://www.regjeringen.no/" target="_blank">Regjeringen</a><br>
+        <a href="https://www.reddbarna.no/" target="_blank">Redd Barna</a><br>
+        <a href="https://press.no" target="_blank">Redd Barna Ungdom</a><br>
+        <a href="https://rovdata.no/" target="_blank">Rovdata</a><br>
+        <a href="https://reiseliv.portfolio.no/" target="_blank">Reiseliv</a><br>
+        <a href="https://psykiskhelse.no/" target="_blank">Rådet for psykisk helse</a><br>
+    <p style="font-weight: bold">S</p>
+        <a href="https://www.sanakirja.org/" target="_blank">Sanakirja – finsk ordbok</a><br>
+        <a href="https://sanit.oahpa.no/" target="_blank">Sanit – nordsamisk ordbok</a><br>
+        <a href="https://www.samfunnsforskning.no/" target="_blank">Samfunnsforskning</a><br>
+        <a href="https://www.statsforvalteren.no/" target="_blank">Statsforvalteren</a><br>
+        <a href="https://www.sdir.no/" target="_blank">Sjøfartsdirektoratet</a><br>
+        <a href="https://skriveverktoy.app.fagbokforlaget.no/" target="_blank">Skriveverktøy</a><br>
+        <a href="https://www.vegvesen.no/kjoretoy/yrkestransport" target="_blank">Statens vegvesen – yrkestransport</a><br>
+        <a href="https://www.ssb.no/" target="_blank">Statistisk sentralbyrå </a><br>
+        <a href="https://snl.no/" target="_blank">Store norske leksikon</a><br>
+        <a href="https://www.stortinget.no/" target="_blank">Stortinget</a><br>
+        <a href="https://www.sprakradet.no/" target="_blank">Språkrådet</a><br>
+        <a href="https://sokogskriv.no/" target="_blank">Søk og skriv</a><br>
+    <p style="font-weight: bold">T</p>
+        <a href="https://tangorin.com/" target="_blank">Tangorin – japansk ordbok</a><br>
+        <a href="https://www.minetegn.no/Tegnordbok-2016/" target="_blank">Tegnordboka</a><br>
+        <a href="https://trinket.io/" target="_blank">Trinket – programmeringsverktøy</a><br>
+    <p style="font-weight: bold">U</p>
+        <a href="https://www.udir.no/" target="_blank">Utdanningsdirektoratet</a><br>
+        <a href="https://www.duo.uio.no/" target="_blank">UiO forskningsarkiv</a><br>
+        <a href="https://www.un.org/en" target="_blank">UN</a><br>
+        <a href="https://whc.unesco.org/" target="_blank">UNESCO World Heritage Centre</a><br>
+        <a href="https://www.unicef.no/" target="_blank">UNICEF Norge</a><br>
+        <a href="https://ucdp.uu.se/" target="_blank">Uppsala universitet – internasjonale konflikter</a><br>
+        <a href="https://census.gov/" target="_blank">US Census</a><br>
+        <a href="https://congress.gov/" target="_blank">US Congress</a><br>
+        <a href="https://www.supremecourt.gov/" target="_blank">US Supreme Court</a><br>
+    <p style="font-weight: bold">V</p>
+        <a href="https://verbix.com/" target="_blank">Verbix – verbbøyning for flere språk</a><br>
+        <a href="https://www.vigoiks.no/eksamen" target="_blank">VigoIKS Eksamen</a><br>
+        <a href="https://www.viten.no/" target="_blank">Viten - Naturfagsenteret</a><br>
+        <a href="https://voxpublica.no/" target="_blank">Vox Publica | Magasin om demokrati og ytringsfrihet</a><br>
+        <a href="https://v-dem.net/" target="_blank">Varieties of Democracy (V-DEM)</a><br>
+        <a href="https://www.wwf.no/" target="_blank">Verdens naturfond (WWF)</a><br>
+        <a href="https://www.visitnorway.no/" target="_blank">Visit Norway (Norsk)</a><br>
+        <a href="https://www.visitnorway.com/" target="_blank">Visit Norway (Engelsk)</a><br>
+    <p style="font-weight: bold">W</p>
+        <a href="https://www.w3schools.com/" target="_blank">W3Schools - webutvikling </a><br>
+        <a href="https://www.wordreference.com/" target="_blank">WordReference – ordbok for flere språk</a><br>
+        <a href="https://whitehouse.gov/" target="_blank">White House</a><br>
+    <p style="font-weight: bold">Y / Ø</p>
+        <a href="https://yougov.co.uk/" target="_blank">YouGov</a><br>
+        <a href="https://www.ostforsk.no/" target="_blank">Østlandsforskning</a><br>
+        <a href="" target="_blank"></a><br>
+        <a href="" target="_blank"></a><br>
+      </td>
+    </tr>
+  
+  <script>
+  function toggleHidden(id) {
+    let element = document.getElementById(id ? id : 'resources')
+    element.style.display = element.style.display === 'none' ? 'block' : 'none'
+    element.style.display === 'block' ? window.scrollTo(0,document.body.scrollHeight) : null
+  }
+  </script>
+</body>
+
+</html>
+
