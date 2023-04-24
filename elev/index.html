@@ -70,8 +70,7 @@
   downloadBtn2.addEventListener('click', () => {
     const fileName = prompt('Skriv inn ditt kandidatnummer-fagkode, dette navnet blir filnavnet på svarmalen som blir lagt i Nedlastinger mappen:');
     if (!fileName) return; // Cancel download if no name is provided
-
-    fetch('eksamensmal.docx')
+    fetch('/eksamensmal.docx')
       .then(response => response.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(new Blob([blob]));
