@@ -21,7 +21,6 @@
 
   </style>
 </head>
-
 <body>
   <img style="margin: 10px" src="logo.svg" alt="" />
   <table width="90%" border="0" align="center">
@@ -35,25 +34,63 @@
         <p>Dette er en felles portal for deg som skal ta eksamen i Vestfold og Telemark fylkeskommune.</p>
 <br> <B>Viktig informasjon.</b>  Trykk Play og lytt til informasjonen i lydfilen. Hvis du vil lese teksten istedenfor så klikker du "<b>her for å laste ned PDF</b>". </br>
 <br>
+<style>
+  audio {
+    margin: 0;
+  }
+</style>
+<div>
+  <h3>Velkommen</h3>
   <audio controls>
-    <source src="/info.mp3">
-      Your browser does not support the audio element.
+    <source src="/Velkommen - Eksamen Voice Over.wav">
+    Your browser does not support the audio element.
   </audio>
+  <div style="display: flex; margin-top: 40px;">
+    <div style="flex: 1; margin-right: 40px;">
+      <h3>Nye fagkoder</h3>
+      <audio controls>
+        <source src="/Nye Fagkoder - Eksamen Voice Over.wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div style="flex: 1;">
+      <h3>Gamle fagkoder</h3>
+      <audio controls>
+        <source src="/Gamle fagkoder - Eksamen Voice Over.wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+</div>
+<br><br>
+<p>Last ned svarmal (Word-dokument): </p>
+<button id="download-btn2">Last ned svarmal (dokument docx)</button>
 <br>
-        <p>Svarmaler:</p>
-        <ul>
-          <form method="get" action="eksamensmal.dotx"><button style="background: none;border-radius: 5px;color: inherit;font: inherit;cursor: pointer;">Last ned Eksamensmal</button></form>        
-        </ul>
+<script>
+  const downloadBtn2 = document.getElementById('download-btn2');
+  downloadBtn2.addEventListener('click', () => {
+    const fileName = prompt('Skriv inn ditt kandidatnummer-fagkode, dette navnet blir filnavnet på svarmalen som blir lagt i Nedlastinger mappen:');
+    if (!fileName) return; // Cancel download if no name is provided
+    fetch('/eksamensmal.docx')
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${fileName}.docx`);
+        document.body.appendChild(link);
+        link.click();
+      });
+  });
+</script>
         <br>
         <p>Videre steg:</p>
         <ul>
           <li>Registrering og innlevering for eksamen, <a href="https://kandidat.udir.no/" target="new">https://kandidat.udir.no/</a></li>
           <li><a href="https://www.udir.no/eksamen-og-prover/eksamen/" target="_blank">Generell informasjon om digital eksamen (udir)</a></li>
         </ul>
-      
       </td>
     </tr>
-
     <tr>
       <td colspan="2" align="left" valign="top">
         <p><b>Vestfold og Telemark Fylkeskommune</b> har lagt til rette for at du kan bruke noen nettressurser som hjelpemiddel under
@@ -189,6 +226,4 @@
         })()
       </script>
 </body>
-
 </html>
-
