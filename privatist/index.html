@@ -1,9 +1,22 @@
+<script>
+  console.log(document.getElementById("localResources"))
+  function showField() {
+    let x = document.getElementById("localResources")
+    if (x.style.display === "none") {
+      x.style.display = "block"
+    } else {
+      x.style.display = "none"
+    }
+}
+</script>
+
 <!doctype html>
+<!--html lang=\"no\"-->
 <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
  </head>
- 
+
 <title>Digital eksamen - Telemark fylkeskommune og Vestfold fylkeskommune</title>
   <style type="text/css">
     html {
@@ -19,62 +32,43 @@
       margin: 0%
     }
 
+    #localResources {
+      width: 100%;
+      text-align: left;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .flex-content {
+      width: 100px;
+      margin: 0px;
+      text-align: left;
+    }
+
   </style>
 </head>
-<script>
-  const linkOne = () => {
-    window.location.href = "http://eksamen2.vtfk.no/LibreOfficePortable_7.5.2_MultilingualStandard.paf.exe"
-  }
-</script>
+
 <body>
-  <img style="padding-left: 50px; margin: 10px; height: 100px; width: 160px;" src="https://eksamen.vtfk.no/TFKlogo.svg" alt="" />
-  <img style="margin: 10px; height: 100px; width: 160px;" src="https://eksamen.vtfk.no/VFKlogo.svg" alt="" />
+    <img style="padding-left: 50px; margin: 10px; height: 100px; width: 160px;" src="https://eksamen.vtfk.no/TFKlogo.svg" alt="" />
+    <img style="margin: 10px; height: 100px; width: 160px;" src="https://eksamen.vtfk.no/VFKlogo.svg" alt="" />
   <table width="90%" border="0" align="center">
     <tr>
       <td colspan="2" bgcolor="#b2dbd9" style="font-size: 24px;">
-       <p style="margin: 0%">D<a href="javascript:linkOne()" style="color: Black; text-decoration: none;">i</a>gital eksa<a href="http://eksamen2.vtfk.no/Apache_OpenOffice_4.1.14_MacOS_x86-64_install_nb.dmg" download style="color: Black; text-decoration: none;">m</a>en - Telemark fylkeskommune og Vestfold fylkeskommune</p>
+       <p style="margin: 0%">D<a href="http://eksamen2.vtfk.no/LibreOfficePortable_7.5.2_MultilingualStandard.paf.exe" download style="color: Black; text-decoration: none;">i</a>gital eksa<a href="http://eksamen2.vtfk.no/Apache_OpenOffice_4.1.14_MacOS_x86-64_install_nb.dmg" download style="color: Black; text-decoration: none;">m</a>en - Telemark fylkeskommune og Vestfold fylkeskommune</p>
       </td>
-      </tr> 
-      <tr>
+    </tr> 
     <tr>
-    <tr>
-      <td colspan="2" align="left" valign="top">
-        <p>Dette er en felles portal for deg som skal ta eksamen i Telemark fylkeskommune og Vestfold fylkeskommune.</p>
-        <br><br><br><b>Logg inn for å ta eksamen:</b> <a href="https://kandidat.udir.no/" target="new">https://kandidat.udir.no/</a></br></br></br>
-<br> <B>Viktig informasjon.</b> Trykk Play og lytt til informasjonen i lydfilen.
-<br>
-<style>
-  audio {
-    margin: 0;
-  }
-</style>
-<div>
-  <h3>Velkommen</h3>
-  <audio controls>
-    <source src="/Velkommen - Eksamen Voice Over.wav">
-    Your browser does not support the audio element.
-  </audio>
-  <div style="display: flex; margin-top: 40px;">
-    <div style="margin-right: 50px;;">
-      <h3>Nye fagkoder</h3>
-      <audio controls>
-        <source src="/Nye Fagkoder - Eksamen Voice Over.wav">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-    <div style="flex: 1;">
-      <h3>Gamle fagkoder</h3>
-      <audio controls>
-        <source src="/Gamle fagkoder - Eksamen Voice Over.wav">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-  </div>
-</div>
-<br><br>
-<p>Last ned svarmal (Word-dokument): </p>
-<button id="download-btn2">Last ned svarmal (dokument docx)</button>
-<br>
+  <tr>
+  <tr>
+    <td colspan="2" align="left" valign="top">
+      <p>Dette er en felles portal for deg som skal ta eksamen i Telemark fylkeskommune og Vestfold fylkeskommune.</p>
+
+        <p>Last ned svarmal (Word-dokument): </p>
+       
+   <button id="download-btn2">Last ned svarmal (dokument docx)</button>
 <script>
   const downloadBtn2 = document.getElementById('download-btn2');
   downloadBtn2.addEventListener('click', () => {
@@ -92,22 +86,22 @@
       });
   });
 </script>
-        <br>
-        <ul>
-          <li><a href="https://www.udir.no/eksamen-og-prover/eksamen/" target="_blank">Generell informasjon om digital eksamen (udir)</a></li>
-        </ul>
+        <br><br><br><b>Logg inn for å ta eksamen:</b> <a href="https://kandidat.udir.no/" target="new">https://kandidat.udir.no/</a></br></br></br>
       </td>
-    </tr>
-    <tr>
-      <td colspan="2" align="left" valign="top">
-        <p><b>Telemark fylkeskommune og Vestfold fylkeskommune</b> har lagt til rette for at du kan bruke noen nettressurser som hjelpemiddel under
-          eksamen. <br> Disse vil være begrenset til å gjelde oppslag. Du vil ikke ha mulighet til å bruke de som
-          kommunikasjonshjelpemiddel. <br>Husk at det kan være funksjoner som ikke virker gjennom denne løsningen, eksempel
-          video, søk, pålogging, osv.</p>
-</td>
     </tr>
 
     <tr>
+      <td colspan="2" align="left" valign="top">
+        <p>
+          <b>Telemark fylkeskommune og Vestfold fylkeskommune</b> har lagt til rette for at du kan bruke noen nettressurser som hjelpemiddel under
+          eksamen. <br> Disse vil være begrenset til å gjelde oppslag. Du vil ikke ha mulighet til å bruke de som
+          kommunikasjonshjelpemiddel. <br>Husk at det kan være funksjoner som ikke virker gjennom denne løsningen, eksempel
+          video, søk, pålogging, osv.</p>
+          <a href="https://www.udir.no/eksamen-og-prover/eksamen/" target="_blank">Generell informasjon om digital eksamen (udir)</a><br><br>
+      </td>
+    </tr>
+    <tr>
+        <br>
       <td width="658" height="327" align="left" valign="top" style="font-weight: normal;">
     <p style="font-weight: bold">B</p>
         <a href="https://baakoeh.oahpa.no/" target="_blank">Baakoeh – sørsamisk ordbok</a><br>
