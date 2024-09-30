@@ -1,2 +1,2 @@
 # eksamen-web
-Kildekode for eksamen.vtfk.no
+Kildekode for eksamen.vestfold.no
