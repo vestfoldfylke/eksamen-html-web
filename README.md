@@ -1,2 +1,2 @@
 # eksamen-web
-Kildekode for eksamen.vestfold.no
+Kildekode for eksamen.vestfoldfylke.no
