@@ -1,83 +1,147 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Eksamenskandidat</title>
-	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
-	<style>
-		body {
-			background-color: #f2f2f2;
-			font-family: 'Nunito Sans', sans-serif;
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 1.6;
-			margin: 0;
-			padding: 0;
-		}
-		.container {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-top: 50px;
-		}
-		.login-box {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			background-color: #fff;
-			padding: 30px;
-			box-shadow: 0px 0px 10px #888;
-			margin-bottom: 50px;
-			margin-top: 30px;
-		}
-		.login-box h2 {
-			margin: 0px;
-			margin-bottom: 20px;
-			font-size: 24px;
-			font-weight: normal;
-			text-align: center;
-		}
-		.login-buttons {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
-			width: 100%;
-			margin-top: 20px;
-		}
-		.login-buttons a {
-			background-color: #4CAF50;
-			border: 2px solid #4CAF50;
-			color: #fff;
-			padding: 14px 20px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 4px 2px;
-			cursor: pointer;
-			width: 48%;
-			transition: all 0.3s ease-in-out;
-		}
-		.login-buttons a:hover {
-			background-color: transparent;
-			color: #4CAF50;
-			border: 2px solid #4CAF50;
-		}
-	</style>
-</head>
-<body>
-	<div class="container">
-		<h1>
-			<!-- <img alt="First Logo" src="https://eksamen.vestfoldfylke.no/TFKlogo.svg" style="height:120px; width:287px" /> -->
-			<img alt="Second Logo" src="https://eksamen.vestfoldfylke.no/VFKlogo.svg" style="height:120px; width:287px" />
-		</h1>
-		<div class="login-box">
-			<h2>Velg hvilken eksamenskandidat du er:</h2>
-			<div class="login-buttons">
-				<a href="http://eksamen.vestfoldfylke.no/elev">Elev</a>
-				<a href="http://eksamen.vestfoldfylke.no/privatist">Privatist</a>
-			</div>
-		</div>
-	</div>
-</body>
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eksamenskandidat - Vestfold fylkeskommune</title>
+
+    <!-- Icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./vestfold-favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./vestfold-favicon-32x32.png">
+
+    <!-- Nunito (overskrifter) + Nunito Sans (brødtekst og knapper) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root{
+        --fg:#000; --bg:#fff; --muted:#525252;
+        --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.08); --border:#e5e7eb;
+
+        /* TFK “Vann”-farge */
+        --vann:#005260;
+        --hover-bg:#ffffff;       /* hvit på hover */
+      }
+
+      html{scroll-behavior:smooth}
+      *,*:before,*:after{box-sizing:border-box}
+      body{
+        margin:0; color:var(--fg); background:var(--bg);
+        font-family:"Nunito Sans",ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans";
+        line-height:1.6;
+      }
+
+      /* Header */
+      header{
+        position:sticky;top:0;z-index:10;
+        background:rgba(255,255,255,.94);
+        backdrop-filter:blur(6px);
+        border-bottom:1px solid var(--border);
+      }
+      .header-inner{
+        max-width:760px;margin:0 auto;
+        display:flex;align-items:center;gap:12px;
+        padding:12px 20px;
+      }
+      .logo{height:48px;width:auto}
+
+      /* Layout */
+      .container{max-width:760px;margin:0 auto;padding:24px 20px}
+      .card{
+        background:#fff;border:1px solid var(--border);
+        border-radius:var(--radius);box-shadow:var(--shadow);
+        padding:20px;
+      }
+
+      h1,h2{font-family:"Nunito",ui-rounded,system-ui,sans-serif;margin:0 0 10px}
+      h1{font-weight:900;font-size:clamp(22px,3.6vw,28px)}
+      h2{font-weight:800;font-size:clamp(18px,3vw,22px)}
+      .muted{color:var(--muted)}
+
+      /* Knapper – mørke default, hvite ved hover; typografi = Nunito Sans 600 */
+      .btn{
+        --pad-y:15px; --pad-x:28px; /* omtrent som vestfoldfylke.no */
+        display:inline-flex; align-items:center; justify-content:center; gap:10px;
+        padding:var(--pad-y) var(--pad-x);
+        border-radius:70px;                         /* pilleform */
+        border:2px solid var(--vann);
+        background:var(--vann); color:#fff;         /* mørk default */
+        text-decoration:none;
+        font-family:"Nunito Sans", ui-sans-serif;   /* samme teksttype som referansen */
+        font-weight:600;                            /* match vekt (semibold) */
+        font-size:1.0625rem;                        /* ~17px – som i referansen */
+        line-height:1.0;
+        transition:color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .06s ease;
+        width:100%;
+        cursor:pointer;
+      }
+      .btn:hover{
+        background:var(--hover-bg); color:var(--vann); /* går til hvit på hover */
+        box-shadow:0 6px 14px rgba(0,82,96,.22);
+        transform:translateY(-1px);
+      }
+      .btn:focus-visible{outline:3px solid #cddde1; outline-offset:2px}
+
+      /* Kort-rutenett – like høye kort og knapper på linje */
+      .hero{display:flex;flex-direction:column;gap:10px;margin-top:6px;margin-bottom:18px}
+      .choices{
+        display:grid; gap:14px; margin-top:12px;
+        grid-template-columns:1fr; align-items:stretch;
+      }
+      @media (min-width:560px){
+        .choices{grid-template-columns:1fr 1fr;}
+      }
+      .choice{
+        padding:18px;border-radius:12px;border:1px solid var(--border);
+        background:#fcfdff;
+        display:flex; flex-direction:column; gap:12px;
+        height:100%;
+      }
+      .choice h2{margin:0}
+      .choice p{margin:0}
+      .choice .actions{margin-top:auto}
+      
+      footer{color:#6b7280;font-size:14px;text-align:center;padding:26px 0 40px}
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-inner">
+        <img class="logo" src="./VFKlogosidestilt.svg" alt="Vestfold fylkeskommune">
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card hero" aria-labelledby="tittel">
+        <h1 id="tittel">Eksamenskandidat</h1>
+        <p class="muted">Velg riktig inngang nedenfor.</p>
+
+        <div class="choices" role="list">
+          <article class="choice" role="listitem" aria-labelledby="elev-title">
+            <h2 id="elev-title">Elev</h2>
+            <p class="muted">For elever i videregående opplæring.</p>
+            <div class="actions">
+              <a class="btn" href="./elev/index.html">Gå til elev</a>
+            </div>
+          </article>
+
+          <article class="choice" role="listitem" aria-labelledby="priv-title">
+            <h2 id="priv-title">Privatist</h2>
+            <p class="muted">For deg som tar eksamen som privatist.</p>
+            <div class="actions">
+              <a class="btn" href="./privatist/index.html">Gå til privatist</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer>© <span id="year"></span> Vestfold fylkeskommune</footer>
+    </main>
+
+    <script>
+      try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){}
+    </script>
+  </body>
 </html>
