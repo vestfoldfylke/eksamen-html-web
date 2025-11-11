@@ -1,122 +1,260 @@
-﻿<script>
-  console.log(document.getElementById("localResources"))
-  function showField() {
-    let x = document.getElementById("localResources")
-    if (x.style.display === "none") {
-      x.style.display = "block"
-    } else {
-      x.style.display = "none"
-    }
-}
-</script>
+﻿<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Digital eksamen - Vestfold fylkeskommune</title>
+    
+    <!-- Icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../vestfold-favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../vestfold-favicon-32x32.png">
 
-<!doctype html>
-<!--html lang=\"no\"-->
-<html>
-    <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
- </head>
+    <!-- Nunito (overskrifter) + Nunito Sans (brødtekst) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-<title>Digital eksamen - Vestfold fylkeskommune</title>
-  <style type="text/css">
-    html {
-      scroll-behavior: smooth;
-    }
-    body,
-    td,
-    th {
-      font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-      font-style: normal;
-    }
-    #resources p, a {
-      margin: 0%
-    }
+    <style>
+      :root {
+        --fg: #000; --bg: #fff; --muted: #525252;
+        --brand: #0891b2; --radius: 14px;
+        --shadow: 0 6px 18px rgba(0,0,0,0.08);
+        --border-color: #e5e7eb;
 
-    #localResources {
-      width: 100%;
-      text-align: left;
-    }
+        /* For perfekt linje under summary-teksten */
+        --summary-pad-x: 14px;
+        --chev-w: 20px;
+        --chev-gap: 12px;
+        --content-indent: calc(var(--summary-pad-x) + var(--chev-w) + var(--chev-gap));
+      }
+      html { scroll-behavior: smooth; }
+      *, *::before, *::after { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Nunito Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans";
+        line-height: 1.6; color: var(--fg); background: var(--bg);
+      }
+      .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 
-    .flex-container {
-      display: flex;
-      flex-wrap: wrap;
-    }
+      header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,0.94);
+        backdrop-filter: blur(6px); border-bottom: 1px solid var(--border-color); }
+      .header-inner { display: flex; align-items: center; gap: 16px; padding: 12px 24px; max-width: 1100px; margin: 0 auto; }
+      .logo { height: 48px; width: auto; }
 
-    .flex-content {
-      width: 100px;
-      margin: 0px;
-      text-align: left;
-    }
+      .card {
+        background: #fff; border-radius: var(--radius);
+        box-shadow: var(--shadow); border: 1px solid var(--border-color);
+        padding: 20px;
+      }
 
-  </style>
-</head>
+      .btn {
+        display: inline-flex; align-items: center; gap: 10px;
+        padding: 12px 16px; border-radius: 12px; border: 0; cursor: pointer;
+        background: #e0f2fe; color: #0b0c0e; text-decoration: none;
+        box-shadow: 0 3px 10px rgba(8,145,178,0.18);
+        transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
+        /* Lås typografi på knapper til Nunito (CTA) */
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      /* slankere knapp for kandidat.udir.no */
+      .btn-compact { padding: 6px 14px; line-height: 1.1; border-radius: 10px; }
+      .btn:hover { transform: translateY(-1px); filter: brightness(1.02); box-shadow: 0 6px 14px rgba(8,145,178,0.22); }
+      .muted { color: var(--muted); }
+      h1, h2, h3 { margin: 0 0 10px; font-family: "Nunito", ui-rounded, system-ui, sans-serif; }
+      h1 { font-weight: 900; } h2, h3 { font-weight: 800; }
+      h3.subtle { font-size: 1.1rem; }
 
-<body>
-    <!-- <img style="padding-left: 50px; margin: 10px; height: 100px; width: 160px;" src="https://eksamen.vestfoldfylke.no/TFKlogo.svg" alt="" /> -->
-    <img style="margin: 10px; height: 100px; width: 160px;" src="https://eksamen.vestfoldfylke.no/VFKlogo.svg" alt="" />
-  <table width="90%" border="0" align="center">
-    <tr>
-      <td colspan="2" bgcolor="#b2dbd9" style="font-size: 24px;">
-       <p style="margin: 0%">D<a href="http://eksamen2.vtfk.no/LibreOfficePortable_7.5.2_MultilingualStandard.paf.exe" download style="color: Black; text-decoration: none;">i</a>gital eksa<a href="http://eksamen2.vtfk.no/Apache_OpenOffice_4.1.14_MacOS_x86-64_install_nb.dmg" download style="color: Black; text-decoration: none;">m</a>en - Vestfold fylkeskommune</p>
-      </td>
-    </tr> 
-    <tr>
-  <tr>
-  <tr>
-    <td colspan="2" align="left" valign="top">
-      <p>Dette er en felles portal for deg som skal ta eksamen i Vestfold fylkeskommune.</p>
+      /* Velkommen-kort: to-spaltet layout (stacker på smal skjerm) */
+      .split { display: grid; gap: 20px; }
+      @media (min-width: 900px) {
+        .split { grid-template-columns: 1fr minmax(260px, 380px); align-items: stretch; }
+      }
 
-        <p>Last ned svarmal (Word-dokument): </p>
-       
-   <button id="download-btn2">Last ned svarmal (dokument docx)</button>
-<script>
-  const downloadBtn2 = document.getElementById('download-btn2');
-  downloadBtn2.addEventListener('click', () => {
-    const fileName = prompt('Skriv inn ditt kandidatnummer-fagkode, dette navnet blir filnavnet på svarmalen som blir lagt i Nedlastinger mappen:');
-    if (!fileName) return; // Cancel download if no name is provided
-    fetch('/eksamensmal.docx')
-      .then(response => response.blob())
-      .then(blob => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `${fileName}.docx`);
-        document.body.appendChild(link);
-        link.click();
-      });
-  });
-</script>
-        <br><br><br><b>Logg inn for å ta eksamen:</b> <a href="https://kandidat.udir.no/" target="new">https://kandidat.udir.no/</a></br></br></br>
-      </td>
-    </tr>
+      /* Pane = kort-stil for begge sider */
+      .pane, .right {
+        background: #fcfdff; border: 1px solid #e8eef2; border-radius: 12px;
+        padding: 12px; display: flex; flex-direction: column; height: 100%;
+      }
+      /* Løft venstre innhold litt for visuell linje med høyre tittel */
+      .pane { padding-top: 0px; }
 
-    <tr>
-      <td colspan="2" align="left" valign="top">
-        <p>
-          <b>Vestfold fylkeskommune</b> har lagt til rette for at du kan bruke noen nettressurser som hjelpemiddel under
-          eksamen. <br> Disse vil være begrenset til å gjelde oppslag. Du vil ikke ha mulighet til å bruke de som
-          kommunikasjonshjelpemiddel. <br>Husk at det kan være funksjoner som ikke virker gjennom denne løsningen, eksempel
-          video, søk, pålogging, osv.</p>
-          <a href="https://www.udir.no/eksamen-og-prover/eksamen/" target="_blank">Generell informasjon om digital eksamen (udir)</a>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" align="left" valign="top">
-        <br>
-        <!-- <p><button onclick="showField()" style="font-size: 14px; padding: 10px;">Trykk her for å se lokale hjelpemidler</button> -->
-        <div id="localResources" style="display:block;">
-          <h2>Lokale nettressurser</h2>
-          <p>Tilgang og lisens til lokale hjelpemidler kan variere fra skole til skole.</p>
-          <div class="flex-container" style="display:flex;">
-            <div class="flex-content" style="flex: 1;">
-              <a href="https://www.retriever.no/tag/atekst/" target="_blank">Atekst</a><br><br>
-              <a href="https://aunivers.no" target="_blank">Aunivers.no</a><br><br>
-              <a href="https://brettboka.no" target="_blank">Brettboka.no (inkl. Fagbokforlaget)</a><br><br>
-              <a href="https://www.cappelendammundervisning.no/" target="_blank">Cappelendamm.no</a><br><br>
-              <a href="https://www.clarify.no/" target="_blank">Clarify (ny)</a><br><br>
-              <a href="https://www.elbok.no/" target="_blank">Elbok.no</a><br><br>
-              <a href="https://app.elevkanalen.no/" target="_blank">Elevkanalen.no</a><br><br>
+      /* INFO-boksen uten grafisk “parentes” */
+      .info { border: 0; background: transparent; padding: 0; border-radius: 0; margin: 0 0 10px 0; }
+
+      /* Litt mer luft før login-linja */
+      .login-cta { margin-top: 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+      .login-cta .hint { font-weight: 700; font-family: "Nunito", ui-rounded, system-ui, sans-serif; }
+      .login-cta .btn { text-decoration: none; }
+
+      .table {
+        width: 100%; border-collapse: collapse; border: 1px solid #d1d5db; border-radius: 8px;
+        overflow: hidden; background: #fff; font-size: 16px;
+        margin-top: 2px; /* luft under h2 */
+      }
+      .table thead th { background: #0b536b; color: #fff; text-align: left; font-weight: 800; padding: 10px 12px; font-family: "Nunito", ui-rounded, system-ui, sans-serif; }
+      .table tbody td { padding: 10px 12px; border-top: 1px solid #e5e7eb; vertical-align: top; }
+      .table tbody tr:nth-child(even) td { background: #f8fafc; }
+      .table a { color: inherit; text-decoration: underline; }
+      .table .url { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: inline-block; }
+      @media (max-width: 640px) { .table { font-size: 15px; } .table .url { white-space: normal; } }
+
+      .grid { display: grid; gap: 20px; }
+
+      /* Lokale nettressurser – to balanserte kolonner, venstrejustert tekst */
+      .list-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 360px));
+        grid-auto-rows: 40px;  /* like høye rader */
+        gap: 8px 24px;
+        align-items: center;
+        justify-content: start;
+        justify-items: start;
+        text-align: left;
+        max-width: 860px;
+        margin-top: 0; /* grunnverdi: ingen ekstra luft */
+      }
+      .lg-item { display: flex; align-items: center; justify-content: flex-start; width: 100%; }
+      .lg-item a { display: inline-block; text-decoration: none; color: inherit; }
+      .lg-item a:hover { text-decoration: underline; }
+      @media (max-width: 640px) { .list-grid { grid-template-columns: 1fr; max-width: none; } }
+
+      /* Details-kort: kompakt høyde når lukket */
+      details.resource, details.hero {
+        border-radius: 12px; border: 1px solid var(--border-color); background: #fff;
+        box-shadow: var(--shadow);
+        padding: 0; /* ingen pad når lukket */
+      }
+      details.resource[open], details.hero[open] { padding: 10px 14px 14px; }
+      details.resource summary, details.hero summary {
+        cursor: pointer; list-style: none; display: flex; align-items: center; gap: var(--chev-gap);
+        padding: 12px var(--summary-pad-x);
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+      }
+      details.resource summary { font-weight: 800; font-size: 1.375rem; line-height: 1.2; margin: 0; }
+      details.hero summary h1 { margin: 0; }
+      details.hero summary::-webkit-details-marker,
+      details.resource summary::-webkit-details-marker { display: none; }
+
+      .chev { width: var(--chev-w); height: var(--chev-w); transition: transform .2s ease; display: inline-block; }
+      details[open] .chev { transform: rotate(90deg); }
+
+      /* Innholdet under summary skal starte på samme vertikale linje som summary-teksten */
+      .content-indent { padding-left: var(--content-indent); }
+      .content-indent > p.muted { margin: 0 0 14px; }   /* dra opp forklaringsteksten litt */
+
+      /* KUN når Lokale nettressurser er ÅPEN: dytt lista noen piksler ned */
+      details.resource[open] .list-grid { margin-top: 10px; } /* justér 6–16px etter smak */
+
+      /* KUN når Lokale nettressurser er ÅPEN: litt mindre bunn-padding i summary */
+      details.resource[open] summary { padding-bottom: 6px; }
+
+      /* Tilgjengelighet: tydelig fokus */
+      a:focus-visible, .btn:focus-visible {
+        outline: 2px solid #0ea5b7;
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      /* Redusert animasjon */
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; }
+      }
+
+      footer { color: #6b7280; font-size: 14px; padding: 28px 0 40px; text-align: center; }
+
+      /* === Gjenbrukbar VANN-stil for mørk→hvit hover === */
+      .btn-vann{
+        border: 2px solid #005260;
+        background: #005260;     /* mørk default */
+        color: #fff;
+      }
+      .btn-vann:hover{
+        background: #ffffff;     /* inverter til hvit */
+        color: #005260;
+        box-shadow: 0 6px 14px rgba(0,82,96,.22);
+        transform: translateY(-1px);
+      }
+      .btn-vann:focus-visible{
+        outline: 3px solid #cddde1;
+        outline-offset: 2px;
+      }
+
+      /* === Overstyr typografi på kandidat.udir.no-teksten (kun tekst, ikke størrelse på knappen) === */
+      .login-cta a.btn.btn-compact {
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.9rem !important;     /* lik tekststørrelse som "Last ned svarmal" */
+        letter-spacing: 0.2px !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-inner">
+        <img class="logo" src="../VFKlogosidestilt.svg" alt="Vestfold fylkeskommune" />
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="grid" style="margin-top: 8px;">
+        <!-- Digital eksamen som details + pil, ÅPEN som standard -->
+        <details class="hero card" open>
+          <summary>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+            <h1>Digital eksamen</h1>
+          </summary>
+
+          <p>Dette er felles portal for <strong>privatister</strong> som skal gjennomføre eksamen i Vestfold fylkeskommune.</p>
+
+          <div class="split">
+            <div class="pane">
+              <div class="info" role="note" aria-label="Viktig informasjon om nettressurser">
+                <p><strong>Vestfold fylkeskommune</strong> har lagt til rette for at du kan bruke noen nettressurser som hjelpemiddel under eksamen. Nettressursene kan ikke brukes som kommunikasjonshjelpemiddel. Merk at enkelte funksjoner kan være utilgjengelige gjennom denne løsningen (f.eks. video, søk, pålogging, osv.).</p>
+                <!-- NY: Kort SEB-informasjon -->
+                <p class="muted" style="margin-top:8px;">
+                  <strong>Eksamen i nederlandsk og tyrkisk gjennomføres i Safe Exam Browser (SEB)</strong>.<br>
+                  I SEB åpnes eksamen i en låst nettleser der eventuelle tillatte nettressurser åpnes via lenke som ligger i oppgavesettet.
+                </p>
+              </div>
             </div>
+
+            <aside class="right">
+              <h3 class="subtle">Svarmal</h3>
+              <p class="muted" id="template-help">
+                <strong>Når bruker jeg svarmal?</strong><br>
+                - Ved <strong>todelt eksamen</strong>: bruk på <strong>del 2</strong>.<br>
+                - Når <strong>oppgaven ber deg laste opp et dokument</strong> som del av besvarelsen.
+              </p>
+              <button class="btn btn-vann" id="download-template" type="button" aria-describedby="template-help">Last ned svarmal</button>
+            </aside>
+          </div>
+
+          <div class="login-cta" aria-label="Pålogging til eksamen">
+            <span class="hint">Her må du logge deg inn for å ta eksamen:</span>
+            <a class="btn btn-compact btn-vann" href="https://kandidat.udir.no/" target="_blank" rel="noopener noreferrer">kandidat.udir.no</a>
+          </div>
+          <p class="muted" style="margin-top: 8px;">
+            <em>Er din eksamen 2-delt får du først tilgang når du starter på del-2.</em>
+          </p>
+        </details>
+      </section>
+
+      <section class="grid" style="margin-top: 20px;">
+        <!-- Lokale nettressurser som details-kort (lukket som standard) -->
+        <details class="resource card">
+          <summary>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+            Lokale nettressurser
+          </summary>
+
+          <div class="content-indent">
+            <p class="muted">
+              Tilgang og lisens til lokale hjelpemiddel kan variere fra skole til skole.
+            </p>
+
             <div class="list-grid" id="localResources">
               <div class="lg-item"><a href="https://aunivers.no" target="_blank" rel="noopener noreferrer">Aunivers</a></div>
               <div class="lg-item"><a href="https://brettboka.no" target="_blank" rel="noopener noreferrer">Brettboka</a></div>
@@ -134,75 +272,71 @@
               <div class="lg-item"><a href="https://www.unibok.no/" target="_blank" rel="noopener noreferrer">Unibok</a></div>
             </div>
           </div>
-            <!-- La til noen ekstra som du kan bruke om du vil. -->
-            <!-- <div class="flex-content">
-              <a href="unibok.no" target="_blank">Unibok</a><br>
-              <a href="skolestudio.no" target="_blank">Skolestudio</a><br>
-              <a href="smartbok.no" target="_blank">Smartbok</a><br>
-              <a href="brettboka.no" target="_blank">Brettboka</a><br>
-            </div> -->
-            <!-- <div class="flex-content">
-              <a href="unibok.no" target="_blank">Unibok</a><br>
-              <a href="skolestudio.no" target="_blank">Skolestudio</a><br>
-              <a href="smartbok.no" target="_blank">Smartbok</a><br>
-              <a href="brettboka.no" target="_blank">Brettboka</a><br>
-            </div> -->
-            <!-- <div class="flex-content">
-              <a href="unibok.no" target="_blank">Unibok</a><br>
-              <a href="skolestudio.no" target="_blank">Skolestudio</a><br>
-              <a href="smartbok.no" target="_blank">Smartbok</a><br>
-              <a href="brettboka.no" target="_blank">Brettboka</a><br>
-            </div> -->
-          </div>
+        </details>
+      </section>
+
+      <section class="grid" style="margin-top: 20px;">
+        <div class="card">
+          <h2>Felles nasjonale nettressurser</h2>
+          <table class="table" aria-label="Åpne nettressurser">
+            <thead>
+              <tr><th scope="col">Nettressurs</th><th scope="col">URL</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="https://baakoeh.oahpa.no" target="_blank" rel="noopener noreferrer">Baakoeh - sørsamisk ordbok</a></td><td><span class="url">https://baakoeh.oahpa.no</span></td></tr>
+              <tr><td><a href="https://orv.banenor.no/orv/doku.php" target="_blank" rel="noopener noreferrer">Bane NOR - operativt regelverk</a></td><td><span class="url">https://orv.banenor.no/orv/doku.php</span></td></tr>
+              <tr><td><a href="https://trv.banenor.no/wiki/Forside" target="_blank" rel="noopener noreferrer">Bane NOR - teknisk regelverk // På denne siden anbefales Chrome.</a></td><td><span class="url">https://trv.banenor.no/wiki/Forside</span></td></tr>
+              <tr><td><a href="https://ordbokene.no" target="_blank" rel="noopener noreferrer">Bokmålsordboka/Nynorskordboka</a></td><td><span class="url">https://ordbokene.no</span></td></tr>
+              <tr><td><a href="https://533.davvi.no/ordbok_samnor.php" target="_blank" rel="noopener noreferrer">Davvi Girji - nordsamisk ordbok</a></td><td><span class="url">https://533.davvi.no/ordbok_samnor.php</span></td></tr>
+              <tr><td><a href="https://www.geogebra.org/classic#cas" target="_blank" rel="noopener noreferrer">Geogebra klassisk</a></td><td><span class="url">https://www.geogebra.org/classic#cas</span></td></tr>
+              <tr><td><a href="https://julev.no/" target="_blank" rel="noopener noreferrer">Julev - lulesamisk ordbok</a></td><td><span class="url">https://julev.no/</span></td></tr>
+              <tr><td><a href="https://sanat.oahpa.no/fkv/nob/" target="_blank" rel="noopener noreferrer">Kvensk ordbok</a></td><td><span class="url">https://sanat.oahpa.no/fkv/nob/</span></td></tr>
+              <tr><td><a href="https://sanat.oahpa.no/nob/fkv/" target="_blank" rel="noopener noreferrer">Kvensk ordbok</a></td><td><span class="url">https://sanat.oahpa.no/nob/fkv/</span></td></tr>
+              <tr><td><a href="https://lexin.oslomet.no" target="_blank" rel="noopener noreferrer">LEXIN - ordbok for flere språk</a></td><td><span class="url">https://lexin.oslomet.no</span></td></tr>
+              <tr><td><a href="https://eksamen.lovdata.no" target="_blank" rel="noopener noreferrer">Lovdata</a></td><td><span class="url">https://eksamen.lovdata.no</span></td></tr>
+              <tr><td><a href="https://ndla.no" target="_blank" rel="noopener noreferrer">NDLA</a></td><td><span class="url">https://ndla.no</span></td></tr>
+              <tr><td><a href="https://sanit.oahpa.no" target="_blank" rel="noopener noreferrer">Sanit - nordsamisk ordbok</a></td><td><span class="url">https://sanit.oahpa.no</span></td></tr>
+              <tr><td><a href="https://snl.no" target="_blank" rel="noopener noreferrer">Store norske leksikon</a></td><td><span class="url">https://snl.no</span></td></tr>
+              <tr><td><a href="https://www.minetegn.no/Tegnordbok-2016" target="_blank" rel="noopener noreferrer">Tegnordboka</a></td><td><span class="url">https://www.minetegn.no/Tegnordbok-2016</span></td></tr>
+            </tbody>
+          </table>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" align="left" valign="top">
-        <br>
-        <h2>Felles nasjonale nettressurser</h2>
-      </td>
-    </tr>
-    <tr>
-      <td width="658" height="327" align="left" valign="top" style="font-weight: normal;">
-        <p style="font-weight: bold">B</p>
-        <a href="https://baakoeh.oahpa.no/" target="_blank">Baakoeh – sørsamisk ordbok</a><br>
-        <a href="https://orv.banenor.no/orv/doku.php" target="_blank">Bane NOR – operativt regelverk</a><br>
-        <a href="https://trv.banenor.no/wiki/Forside" target="_blank">Bane NOR – teknisk regelverk</a><br>
-        <a href="https://ordbokene.no/" target="_blank">Bokmålsordboka/Nynorskordboka</a><br>
-    <p style="font-weight: bold">D</p>
-        <a href="https://533.davvi.no/ordbok_samnor.php" target="_blank">Davvi Girji - Nordsamisk ordbok</a><br>
-    <p style="font-weight: bold">G</p>
-        <a href="https://www.geogebra.org/classic#cas" target="_blank">GeoGebra</a><br>
-    <p style="font-weight: bold">J</p>
-        <a href="https://julev.no/" target="_blank">Julev - Lulesamisk ordbok</a><br> 
-    <p style="font-weight: bold">K</p>
-        <a href="https://sanat.oahpa.no/fkv/nob/" target="_blank">Kvensk-norsk ordbok</a><br>
-        <a href="https://sanat.oahpa.no/nob/fkv/" target="_blank">Norsk-kvensk ordbok</a><br>
-    <p style="font-weight: bold">L</p>
-        <a href="https://lexin.oslomet.no/" target="_blank">LEXIN – ordbok for flere språk</a><br>
-        <a href="http://eksamen.lovdata.no/" target="_blank">Lovdata</a><br>
-</td>
-    <td width="661" align="left" valign="top" style="font-weight: normal;">
-    <p style="font-weight: bold">N</p>
-        <a href="https://ndla.no/" target="_blank">NDLA</a><br>
-    <p style="font-weight: bold">S</p>
-        <a href="https://sanit.oahpa.no/" target="_blank">Sanit – nordsamisk ordbok</a><br>
-        <a href="https://snl.no/" target="_blank">Store norske leksikon</a><br>
-    <p style="font-weight: bold">T</p>
-        <a href="https://www.minetegn.no/Tegnordbok-2016/" target="_blank">Tegnordboka</a><br>
-        <a href="" target="_blank"></a><br>
-      </td>
-    </tr>
-  
-  <script>
-  function toggleHidden(id) {
-    let element = document.getElementById(id ? id : 'resources')
-    element.style.display = element.style.display === 'none' ? 'block' : 'none'
-    element.style.display === 'block' ? window.scrollTo(0,document.body.scrollHeight) : null
-  }
-  </script>
-</body>
+      </section>
 
+      <footer>© <span id="year"></span> Vestfold fylkeskommune</footer>
+    </main>
+
+    <script>
+      try { document.getElementById('year').textContent = new Date().getFullYear(); } catch(e) {}
+
+      (function() {
+        try {
+          const btn = document.getElementById('download-template');
+          if (!btn) return;
+          const sanitize = (v) => (v || '')
+            .replace(/[^A-Za-z0-9 _.-]/g, '-').replace(/\s+/g, ' ').trim().substring(0, 80);
+
+          async function downloadTemplate() {
+            const input = prompt('Skriv kandidatnummer og fagkode (blir filnavnet):');
+            if (!input) return;
+            const fileName = sanitize(input) || 'svarmal';
+            try {
+              const resp = await fetch('/eksamensmal.docx', { cache: 'no-store' });
+              if (!resp.ok) throw new Error('Kunne ikke hente mal');
+              const blob = await resp.blob();
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url; a.download = `${fileName}.docx`;
+              document.body.appendChild(a); a.click(); a.remove();
+              URL.revokeObjectURL(url);
+            } catch (e) {
+              alert('Beklager, noe gikk galt ved nedlasting. Prøv igjen eller kontakt IT-personell.');
+              console.error(e);
+            }
+          }
+          btn.addEventListener('click', downloadTemplate);
+        } catch(e) { console.error(e); }
+      })();
+    </script>
+  </body>
 </html>
-
