@@ -181,11 +181,11 @@
         outline-offset: 2px;
       }
 
-      /* === Overstyr typografi på kandidat.udir.no-teksten (kun tekst) === */
+      /* === Overstyr typografi på kandidat.udir.no-teksten (kun tekst, ikke størrelse på knappen) === */
       .login-cta a.btn.btn-compact {
         font-family: "Nunito", ui-rounded, system-ui, sans-serif !important;
         font-weight: 800 !important;
-        font-size: 0.9rem !important;  /* matcher “Last ned svarmal” */
+        font-size: 0.9rem !important;     /* lik tekststørrelse som "Last ned svarmal" */
         letter-spacing: 0.2px !important;
       }
     </style>
@@ -207,12 +207,13 @@
             <h1>Digital eksamen</h1>
           </summary>
 
-          <p>Dette er felles portal for <strong>elever</strong> som skal gjennomføre eksamen i Vestfold fylkeskommune.</p>
+          <p>Dette er felles portal for <strong>privatister</strong> som skal gjennomføre eksamen i Vestfold fylkeskommune.</p>
 
           <div class="split">
             <div class="pane">
               <div class="info" role="note" aria-label="Viktig informasjon om nettressurser">
                 <p><strong>Vestfold fylkeskommune</strong> har lagt til rette for at du kan bruke noen nettressurser som hjelpemiddel under eksamen. Nettressursene kan ikke brukes som kommunikasjonshjelpemiddel. Merk at enkelte funksjoner kan være utilgjengelige gjennom denne løsningen (f.eks. video, søk, pålogging, osv.).</p>
+                <!-- NY: Kort SEB-informasjon -->
                 <p class="muted" style="margin-top:8px;">
                   <strong>Eksamen i nederlandsk og tyrkisk gjennomføres i Safe Exam Browser (SEB)</strong>.<br>
                   I SEB åpnes eksamen i en låst nettleser der eventuelle tillatte nettressurser åpnes via lenke som ligger i oppgavesettet.
@@ -242,8 +243,8 @@
       </section>
 
       <section class="grid" style="margin-top: 20px;">
-        <!-- Lokale nettressurser: ELEVER = ÅPEN -->
-        <details class="resource card" open>
+        <!-- Lokale nettressurser som details-kort (lukket som standard) -->
+        <details class="resource card">
           <summary>
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
             Lokale nettressurser
