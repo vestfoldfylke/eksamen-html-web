@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tilrettelagt digital eksamen uten SEB - Vestfold fylkeskommune</title>
+
+    <!-- Icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../vestfold-favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../vestfold-favicon-32x32.png">
+
+    <!-- Nunito (overskrifter) + Nunito Sans (brødtekst) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --fg: #000; --bg: #fff; --muted: #525252;
+        --brand: #0891b2; --radius: 14px;
+        --shadow: 0 6px 18px rgba(0,0,0,0.08);
+        --border-color: #e5e7eb;
+
+        /* For perfekt linje under summary-teksten */
+        --summary-pad-x: 14px;
+        --chev-w: 20px;
+        --chev-gap: 12px;
+        --content-indent: calc(var(--summary-pad-x) + var(--chev-w) + var(--chev-gap));
+      }
+
+      html { scroll-behavior: smooth; }
+      *, *::before, *::after { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Nunito Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans";
+        line-height: 1.6;
+        color: var(--fg);
+        background: var(--bg);
+      }
+
+      .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255,255,255,0.94);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 12px 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .logo { height: 48px; width: auto; }
+
+      .card {
+        background: #fff;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        padding: 20px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 0;
+        cursor: pointer;
+        background: #e0f2fe;
+        color: #0b0c0e;
+        text-decoration: none;
+        box-shadow: 0 3px 10px rgba(8,145,178,0.18);
+        transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+
+      .btn-compact {
+        padding: 6px 14px;
+        line-height: 1.1;
+        border-radius: 10px;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.02);
+        box-shadow: 0 6px 14px rgba(8,145,178,0.22);
+      }
+
+      .muted { color: var(--muted); }
+
+      h1, h2, h3 {
+        margin: 0 0 10px;
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+      }
+
+      h1 { font-weight: 900; }
+      h2, h3 { font-weight: 800; }
+      h3.subtle { font-size: 1.1rem; }
+
+      .split { display: grid; gap: 20px; }
+
+      @media (min-width: 900px) {
+        .split {
+          grid-template-columns: 1fr minmax(260px, 380px);
+          align-items: stretch;
+        }
+      }
+
+      .pane, .right {
+        background: #fcfdff;
+        border: 1px solid #e8eef2;
+        border-radius: 12px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .pane { padding-top: 0; }
+
+      .info {
+        border: 0;
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+        margin: 0 0 10px 0;
+      }
+
+      .alert-box {
+        background: #fff7ed;
+        border: 1px solid #fdba74;
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin: 14px 0 10px;
+      }
+
+      .alert-box p { margin: 0; }
+
+      .login-cta {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .login-cta .hint {
+        font-weight: 700;
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+      }
+
+      .login-cta .btn { text-decoration: none; }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+        font-size: 16px;
+        margin-top: 2px;
+      }
+
+      .table thead th {
+        background: #0b536b;
+        color: #fff;
+        text-align: left;
+        font-weight: 800;
+        padding: 10px 12px;
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+      }
+
+      .table tbody td {
+        padding: 10px 12px;
+        border-top: 1px solid #e5e7eb;
+        vertical-align: top;
+      }
+
+      .table tbody tr:nth-child(even) td { background: #f8fafc; }
+
+      .table a {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .table .url {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        display: inline-block;
+      }
+
+      @media (max-width: 640px) {
+        .table { font-size: 15px; }
+        .table .url { white-space: normal; }
+      }
+
+      .grid { display: grid; gap: 20px; }
+
+      details.resource, details.hero {
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        background: #fff;
+        box-shadow: var(--shadow);
+        padding: 0;
+      }
+
+      details.resource[open], details.hero[open] { padding: 10px 14px 14px; }
+
+      details.resource summary, details.hero summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: var(--chev-gap);
+        padding: 12px var(--summary-pad-x);
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+      }
+
+      details.resource summary {
+        font-weight: 800;
+        font-size: 1.375rem;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      details.hero summary h1 { margin: 0; }
+
+      details.hero summary::-webkit-details-marker,
+      details.resource summary::-webkit-details-marker { display: none; }
+
+      .chev {
+        width: var(--chev-w);
+        height: var(--chev-w);
+        transition: transform .2s ease;
+        display: inline-block;
+      }
+
+      details[open] .chev { transform: rotate(90deg); }
+
+      a:focus-visible, .btn:focus-visible {
+        outline: 2px solid #0ea5b7;
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; }
+      }
+
+      footer {
+        color: #6b7280;
+        font-size: 14px;
+        padding: 28px 0 40px;
+        text-align: center;
+      }
+
+      /* Gjenbrukbar VANN-stil for mørk→hvit hover */
+      .btn-vann {
+        border: 2px solid #005260;
+        background: #005260;
+        color: #fff;
+      }
+
+      .btn-vann:hover {
+        background: #ffffff;
+        color: #005260;
+        box-shadow: 0 6px 14px rgba(0,82,96,.22);
+        transform: translateY(-1px);
+      }
+
+      .btn-vann:focus-visible {
+        outline: 3px solid #cddde1;
+        outline-offset: 2px;
+      }
+
+      /* Overstyr typografi på kandidat.udir.no-teksten */
+      .login-cta a.btn.btn-compact {
+        font-family: "Nunito", ui-rounded, system-ui, sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 0.9rem !important;
+        letter-spacing: 0.2px !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-inner">
+        <img class="logo" src="../VFKlogosidestilt.svg" alt="Vestfold fylkeskommune" />
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="grid" style="margin-top: 8px;">
+        <details class="hero card" open>
+          <summary>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+            <h1>Tilrettelagt digital eksamen uten SEB</h1>
+          </summary>
+
+          <p>Dette er portalen for <strong>kandidater</strong> som har fått unntak fra bruk av Safe Exam Browser (SEB).</p>
+
+          <div class="split">
+            <div class="pane">
+              <div class="info" role="note" aria-label="Viktig informasjon om hjelpemidler">
+                <p><strong>Vestfold fylkeskommune</strong> har lagt til rette for at du kan bruke utvalgte nettressurser som hjelpemiddel under eksamen. Nettressursene kan ikke brukes som kommunikasjonshjelpemiddel.</p>
+
+                <div class="alert-box" role="alert" aria-label="Viktig informasjon om tillatte hjelpemidler">
+                  <p><strong>Du kan kun bruke hjelpemidlene som er gjort tilgjengelige på denne siden.</strong> Det føres særskilt tilsyn av eksamensgjennomføringen. 
+                    Dersom du åpner andre nettsteder, bruker lokale filer eller tar i bruk andre hjelpemidler enn dem du har fått tillatelse til å bruke, kan dette bli vurdert som <strong>juks eller forsøk på juks</strong>.</p>
+                </div>
+              </div>
+            </div>
+
+            <aside class="right">
+              <h3 class="subtle">Viktig! Dette er ikke tillatt.</h3>
+              <p class="subtle" id="template-help">
+                - <strong>Lokale filer på PC-en</strong><br>
+                - <strong>Andre nettsteder enn dem som er lenket til og godkjent på denne siden</strong><br>
+                - <strong>Andre hjelpemidler enn dem du har fått tillatelse til å bruke</strong><br>
+              </p>
+            </aside>
+          </div>
+
+          <div class="login-cta" aria-label="Pålogging til eksamen">
+            <span class="hint">Logg inn for å ta eksamen:</span>
+            <a class="btn btn-compact btn-vann" href="https://kandidat.udir.no/" target="_blank" rel="noopener noreferrer">kandidat.udir.no</a>
+          </div>
+
+          <p class="muted" style="margin-top: 8px;">
+          </p>
+        </details>
+      </section>
+
+      <section class="grid" style="margin-top: 20px;">
+        <div class="card">
+          <h2>Felles nasjonale nettressurser</h2>
+
+          <div class="alert-box" role="note" aria-label="Viktig informasjon om nettressurser">
+            <p><strong>Kun nettressursene som er listet opp nedenfor, er tillatt å bruke under eksamen.</strong> Å åpne andre nettsteder eller bruke andre hjelpemidler kan bli vurdert som juks eller forsøk på juks.</p>
+          </div>
+
+          <table class="table" aria-label="Åpne nettressurser">
+            <thead>
+              <tr>
+                <th scope="col">Nettressurs</th>
+                <th scope="col">URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="https://www.clarify.no/" target="_blank" rel="noopener noreferrer">Clarify - Digital ordbok</a></td><td><span class="url">https://www.clarify.no/</span></td></tr>
+              <tr><td><a href="https://www.ordnett.no/" target="_blank" rel="noopener noreferrer">Ordnett - Digital ordbok</a></td><td><span class="url">https://www.ordnett.no/</span></td></tr>
+              <tr><td><a href="https://ordbokene.no" target="_blank" rel="noopener noreferrer">Bokmålsordboka/Nynorskordboka</a></td><td><span class="url">https://ordbokene.no</span></td></tr>
+              <tr><td><a href="https://lexin.oslomet.no" target="_blank" rel="noopener noreferrer">LEXIN - ordbok for flere språk</a></td><td><span class="url">https://lexin.oslomet.no</span></td></tr>
+              <tr><td><a href="https://eksamen.lovdata.no" target="_blank" rel="noopener noreferrer">Lovdata</a></td><td><span class="url">https://eksamen.lovdata.no</span></td></tr>
+              <tr><td><a href="https://snl.no" target="_blank" rel="noopener noreferrer">Store norske leksikon</a></td><td><span class="url">https://snl.no</span></td></tr>
+              <tr><td><a rel="noopener noreferrer">Lingdys</a></td><td><span class="url">Lokalt installert</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>© <span id="year"></span> Vestfold fylkeskommune</footer>
+    </main>
+
+    <script>
+      try {
+        document.getElementById('year').textContent = new Date().getFullYear();
+      } catch (e) {}
+    </script>
+  </body>
+</html>
